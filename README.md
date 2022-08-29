@@ -22,7 +22,7 @@ Want to contribute to this extension? The quickest way is to <a href="https://he
 If you encounter any problems or bugs, please <a href="https://github.com/inadeemkhan/magento2-admin-order-status-in-color/issues">open an issue</a> on GitHub.
 
 <b>Admin Grid</b>
-![ScreenShot](https://github.com/mateussantin/magento2-admin-order-status-color/blob/master/screenshot/order-status.png)
+![ScreenShot](https://github.com/inadeemkhan/magento2-images/blob/master/order-status.png)
 
 ## Prerequisites
 
