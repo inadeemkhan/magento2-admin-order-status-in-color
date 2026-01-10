@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
     <columns name="sales_order_columns">
         <column name="status" component="DevScripts_OrderStatusColor/js/grid/columns/status-color">
             <settings>
                 <filter>select</filter>
-                <options class="Magento\Sales\Model\ResourceModel\Order\Status\Collection"/>
                 <dataType>select</dataType>
                 <label translate="true">Status</label>
+                <options class="Magento\Sales\Model\ResourceModel\Order\Status\Collection"/>
             </settings>
         </column>
     </columns>
