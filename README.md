@@ -2,7 +2,7 @@
 
 ![Magento](https://img.shields.io/badge/Magento-2.x-orange?logo=magento)  ![PHP](https://img.shields.io/badge/PHP-8.x-blue?logo=php) ![Contributions](https://img.shields.io/badge/Contributions-Welcome-brightgreen)  
   
-##### The Order Delete extension for Magento 2 allows administrators to securely delete unwanted or test orders directly from the admin panel. It integrates with the Sales Order Grid and supports single or mass deletion based on user permissions, ensuring controlled and efficient order management.
+##### DevScripts Order Status Color adds configurable color labels to order statuses in the Magento 2 admin order grid, allowing administrators to quickly identify order states. The module includes backend settings to enable or disable the feature and manage status colors easily.
 ---
 
 ## Installation  
@@ -23,7 +23,7 @@
 
 **Admin Configuration**  
 
-![Admin Configuration](https://github.com/inadeemkhan/magento2-delete-orders-master/blob/master/images/orders.png) 
+<!-- ![Admin Configuration](https://github.com/inadeemkhan/magento2-admin-order-status-in-color/blob/master/images/orders.png)  -->
 
 ---
 
@@ -48,7 +48,7 @@ The fastest way to contribute is by submitting a [pull request](https://help.git
 
 ## Issues & Support  
 
-If you encounter any issues or bugs, please [open an issue](https://github.com/inadeemkhan/magento2-delete-orders-master/issues) on GitHub.  
+If you encounter any issues or bugs, please [open an issue](https://github.com/inadeemkhan/magento2-admin-order-status-in-color/issues) on GitHub.  
 
 For direct support or feedback, feel free to contact:  
 📧 [khannadeem243@gmail.com](mailto:khannadeem243@gmail.com)  

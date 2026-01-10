@@ -1,55 +1,133 @@
 <?php
+declare(strict_types=1);
+
 namespace DevScripts\OrderStatusColor\Block\Adminhtml\System\Config\Form\Field;
 
 use Magento\Config\Block\System\Config\Form\Field\FieldArray\AbstractFieldArray;
+use Magento\Framework\Data\Form\Element\AbstractElement;
+use DevScripts\OrderStatusColor\Block\Adminhtml\System\Config\Form\Field\StatusSelect;
+use DevScripts\OrderStatusColor\Block\Adminhtml\System\Config\Form\Field\ColorPicker;
 
-class StatusColors extends AbstractFieldArray {
-    protected $_statusRenderer;
-    protected $_colorRenderer;
+class StatusColors extends AbstractFieldArray
+{
+    /**
+     * @var StatusSelect|null
+     */
+    protected ?StatusSelect $statusRenderer = null;
 
-    protected function _prepareToRender() {
-        $this->addColumn('status', ['label' => __('Order Status'), 'renderer' => $this->getStatusRenderer()]);
-        $this->addColumn('bg_color', ['label' => __('Background Color'), 'renderer' => $this->getColorRenderer()]);
-        $this->addColumn('text_color', ['label' => __('Text Color'), 'renderer' => $this->getColorRenderer()]);
+    /**
+     * @var ColorPicker|null
+     */
+    protected ?ColorPicker $colorRenderer = null;
+
+    /**
+     * Prepare dynamic rows
+     *
+     * @return void
+     */
+    protected function _prepareToRender(): void
+    {
+        $this->addColumn(
+            'status',
+            [
+                'label'    => __('Order Status'),
+                'renderer' => $this->getStatusRenderer(),
+            ]
+        );
+
+        $this->addColumn(
+            'bg_color',
+            [
+                'label'    => __('Background Color'),
+                'renderer' => $this->getColorRenderer(),
+            ]
+        );
+
+        $this->addColumn(
+            'text_color',
+            [
+                'label'    => __('Text Color'),
+                'renderer' => $this->getColorRenderer(),
+            ]
+        );
+
         $this->_addAfter = false;
         $this->_addButtonLabel = __('Add Status Color');
     }
 
-    protected function getStatusRenderer() {
-        if (!$this->_statusRenderer) {
-            $this->_statusRenderer = $this->getLayout()->createBlock(
-                \DevScripts\OrderStatusColor\Block\Adminhtml\System\Config\Form\Field\StatusSelect::class,
-                '', ['data' => ['is_render_to_js_template' => true]]
+    /**
+     * Get order status dropdown renderer
+     *
+     * @return StatusSelect
+     */
+    protected function getStatusRenderer(): StatusSelect
+    {
+        if ($this->statusRenderer === null) {
+            $this->statusRenderer = $this->getLayout()->createBlock(
+                StatusSelect::class,
+                '',
+                ['data' => ['is_render_to_js_template' => true]]
             );
         }
-        return $this->_statusRenderer;
+
+        return $this->statusRenderer;
     }
 
-    protected function getColorRenderer() {
-        if (!$this->_colorRenderer) {
-            $this->_colorRenderer = $this->getLayout()->createBlock(
-                \DevScripts\OrderStatusColor\Block\Adminhtml\System\Config\Form\Field\ColorPicker::class,
-                '', ['data' => ['is_render_to_js_template' => true]]
+    /**
+     * Get color picker renderer
+     *
+     * @return ColorPicker
+     */
+    protected function getColorRenderer(): ColorPicker
+    {
+        if ($this->colorRenderer === null) {
+            $this->colorRenderer = $this->getLayout()->createBlock(
+                ColorPicker::class,
+                '',
+                ['data' => ['is_render_to_js_template' => true]]
             );
         }
-        return $this->_colorRenderer;
+
+        return $this->colorRenderer;
     }
 
-    protected function _getElementHtml(\Magento\Framework\Data\Form\Element\AbstractElement $element) {
+    /**
+     * Append JS for color picker initialization
+     *
+     * @param AbstractElement $element
+     * @return string
+     */
+    protected function _getElementHtml(AbstractElement $element): string
+    {
         $html = parent::_getElementHtml($element);
-        $html .= '<script type="text/javascript">
-            require(["jquery", "jquery/colorpicker/js/colorpicker", "domReady!"], function ($) {
-                $("body").on("focus", ".colorpicker-input", function() {
-                    var $el = $(this);
-                    if (!$el.hasClass("cp-initialized")) {
-                        $el.ColorPicker({
-                            onChange: function (hsb, hex, rgb) { $el.val("#" + hex).trigger("change"); },
-                            onBeforeShow: function () { $(this).ColorPickerSetColor(this.value); }
-                        }).addClass("cp-initialized");
-                    }
+
+        $html .= <<<HTML
+                <script type="text/javascript">
+                require([
+                    "jquery",
+                    "jquery/colorpicker/js/colorpicker",
+                    "domReady!"
+                ], function ($) {
+                    "use strict";
+
+                    $("body").on("focus", ".colorpicker-input", function () {
+                        var \$el = $(this);
+
+                        if (!\$el.hasClass("cp-initialized")) {
+                            \$el.ColorPicker({
+                                onChange: function (hsb, hex) {
+                                    \$el.val("#" + hex).trigger("change");
+                                },
+                                onBeforeShow: function () {
+                                    $(this).ColorPickerSetColor(this.value);
+                                }
+                            }).addClass("cp-initialized");
+                        }
+                    });
                 });
-            });
-        </script>';
+                </script>
+                HTML;
+
         return $html;
     }
 }

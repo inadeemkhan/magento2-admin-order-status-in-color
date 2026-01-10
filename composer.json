@@ -1,6 +1,6 @@
 {
-    "name": "devscripts/module-orders-delete",
-    "description": "Magento 2 extension to delete the orders from admin order grid.",
+    "name": "devscripts/magento2-admin-order-status-in-color",
+    "description": "Magento 2 extension to show the Orders status with Colorful background & font in admin order grid.",
     "type": "magento2-module",
     "license": "proprietary",
     "authors": [

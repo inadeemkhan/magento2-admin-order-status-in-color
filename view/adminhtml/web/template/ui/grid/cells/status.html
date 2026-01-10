@@ -1,5 +1,8 @@
 <div class="data-grid-cell-content">
-    <span class="order-status-badge" 
-          data-bind="text: $col.getLabel($row()), class: $col.getStatusClass($row())">
+    <span class="order-status-badge"
+          data-bind="
+              text: $col.getLabel($row()),
+              css: $col.getStatusClass($row())
+          ">
     </span>
 </div>
