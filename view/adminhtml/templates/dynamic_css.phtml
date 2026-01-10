@@ -1,10 +1,14 @@
-<?php
-/**
- * @var \DevScripts\OrderStatusColor\Block\Adminhtml\Order\Grid\DynamicCss $block
- */
-?>
+<?php /** @var $block \DevScripts\OrderStatusColor\Block\Adminhtml\Order\Grid\DynamicCss */ ?>
 <?php if ($block->isEnabled()): ?>
-    <style>
+    <?php $colors = $block->getStatusColors(); ?>
+    
+    <script type="text/javascript">
+        // Create a global JS map for custom labels and colors
+        window.orderStatusColorMap = <?= json_encode(array_column($colors, null, 'status')) ?>;
+    </script>
+
+    <style type="text/css">
+        /* Base styles for status badges */
         .order-status-badge {
             padding: 4px 10px;
             border-radius: 3px;
@@ -18,17 +22,13 @@
             border: 1px solid transparent;
         }
 
-        <?php foreach ($block->getStatusColors() as $row): ?>
-            <?php
-            $statusClass = strtolower((string)($row['status'] ?? ''));
-            $bgColor = (string)($row['bg_color'] ?? '');
-            $textColor = (string)($row['text_color'] ?? '');
-            ?>
-
-            .status-<?= $block->escapeHtmlAttr($statusClass) ?> {
-                background-color: <?= $block->escapeHtmlAttr($bgColor) ?>;
-                color: <?= $block->escapeHtmlAttr($textColor) ?>;
-                border-color: <?= $block->escapeHtmlAttr($textColor) ?>;
+        <?php foreach ($colors as $row): ?>
+            <?php $class = strtolower($row['status']); ?>
+            /* Dynamic colors for each status */
+            .status-<?= $class ?> {
+                background-color: <?= $row['bg_color'] ?>;
+                color: <?= $row['text_color'] ?>;
+                border-color: <?= $row['text_color'] ?>;
             }
         <?php endforeach; ?>
     </style>

@@ -21,7 +21,7 @@ class StatusColors extends AbstractFieldArray
     protected ?ColorPicker $colorRenderer = null;
 
     /**
-     * Prepare dynamic rows
+     * Prepare dynamic rows for system configuration
      *
      * @return void
      */
@@ -32,6 +32,15 @@ class StatusColors extends AbstractFieldArray
             [
                 'label'    => __('Order Status'),
                 'renderer' => $this->getStatusRenderer(),
+                'class'    => 'required-entry',
+            ]
+        );
+
+        $this->addColumn(
+            'custom_label',
+            [
+                'label' => __('Display Label (Optional)'),
+                'class' => 'input-text',
             ]
         );
 
@@ -40,6 +49,7 @@ class StatusColors extends AbstractFieldArray
             [
                 'label'    => __('Background Color'),
                 'renderer' => $this->getColorRenderer(),
+                'class'    => 'required-entry',
             ]
         );
 
@@ -48,6 +58,7 @@ class StatusColors extends AbstractFieldArray
             [
                 'label'    => __('Text Color'),
                 'renderer' => $this->getColorRenderer(),
+                'class'    => 'required-entry',
             ]
         );
 
@@ -56,7 +67,7 @@ class StatusColors extends AbstractFieldArray
     }
 
     /**
-     * Get order status dropdown renderer
+     * Get order status select renderer
      *
      * @return StatusSelect
      */
@@ -92,7 +103,7 @@ class StatusColors extends AbstractFieldArray
     }
 
     /**
-     * Append JS for color picker initialization
+     * Append JavaScript for color picker initialization
      *
      * @param AbstractElement $element
      * @return string
@@ -102,31 +113,31 @@ class StatusColors extends AbstractFieldArray
         $html = parent::_getElementHtml($element);
 
         $html .= <<<HTML
-                <script type="text/javascript">
-                require([
-                    "jquery",
-                    "jquery/colorpicker/js/colorpicker",
-                    "domReady!"
-                ], function ($) {
-                    "use strict";
+            <script type="text/javascript">
+            require([
+                "jquery",
+                "jquery/colorpicker/js/colorpicker",
+                "domReady!"
+            ], function ($) {
+                "use strict";
 
-                    $("body").on("focus", ".colorpicker-input", function () {
-                        var \$el = $(this);
+                $("body").on("focus", ".colorpicker-input", function () {
+                    var \$el = $(this);
 
-                        if (!\$el.hasClass("cp-initialized")) {
-                            \$el.ColorPicker({
-                                onChange: function (hsb, hex) {
-                                    \$el.val("#" + hex).trigger("change");
-                                },
-                                onBeforeShow: function () {
-                                    $(this).ColorPickerSetColor(this.value);
-                                }
-                            }).addClass("cp-initialized");
-                        }
-                    });
+                    if (!\$el.hasClass("cp-initialized")) {
+                        \$el.ColorPicker({
+                            onChange: function (hsb, hex) {
+                                \$el.val("#" + hex).trigger("change");
+                            },
+                            onBeforeShow: function () {
+                                $(this).ColorPickerSetColor(this.value);
+                            }
+                        }).addClass("cp-initialized");
+                    }
                 });
-                </script>
-                HTML;
+            });
+            </script>
+            HTML;
 
         return $html;
     }

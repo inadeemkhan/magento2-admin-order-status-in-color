@@ -23,7 +23,19 @@
 
 **Admin Configuration**  
 
-<!-- ![Admin Configuration](https://github.com/inadeemkhan/magento2-admin-order-status-in-color/blob/master/images/orders.png)  -->
+![Admin Configuration](https://github.com/inadeemkhan/magento2-admin-order-status-in-color/blob/master/images/admin-configuration.png) 
+
+**Sales Order**  
+
+![Admin Configuration](https://github.com/inadeemkhan/magento2-admin-order-status-in-color/blob/master/images/orders.png) 
+
+**Sales Invoices**  
+
+![Admin Configuration](https://github.com/inadeemkhan/magento2-admin-order-status-in-color/blob/master/images/invoice.png) 
+
+**Sales Shipment**  
+
+![Admin Configuration](https://github.com/inadeemkhan/magento2-admin-order-status-in-color/blob/master/images/shipment.png) 
 
 ---
 
