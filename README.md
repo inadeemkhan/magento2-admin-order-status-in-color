@@ -1,57 +1,54 @@
-# Magento 2 Admin Order Status Color in Order Grid
-Magento2 extension to changes the color of the order status column in the UI grid, based on the current status of the order. 
+# Magento 2 Extension — OrderStatusColor
 
-## Features:
-1. To changes the color of the order status column in the UI grid, based on the current status of the order.
-2. Magento2 extension works like a core functionality.
+![Magento](https://img.shields.io/badge/Magento-2.x-orange?logo=magento)  ![PHP](https://img.shields.io/badge/PHP-8.x-blue?logo=php) ![Contributions](https://img.shields.io/badge/Contributions-Welcome-brightgreen)  
+  
+##### The Order Delete extension for Magento 2 allows administrators to securely delete unwanted or test orders directly from the admin panel. It integrates with the Sales Order Grid and supports single or mass deletion based on user permissions, ensuring controlled and efficient order management.
+---
 
-## Installation
+## Installation  
 
-### Type 1: Zip file
+1. Copy the contents of this repository into:  
+   ```bash
+   {MAGENTO_ROOT}/app/code/DevScripts/OrderStatusColor/
+   ```
+2. Run the following commands in your Magento root directory:  
+   ```bash
+   php bin/magento setup:upgrade
+   php bin/magento setup:static-content:deploy
+   php bin/magento cache:flush
+   ```
+---
 
- - Unzip the zip file in `app/code/Nadeem`
- - Enable the module by running `php bin/magento module:enable Nadeem_OrderStatusColor`
- - Apply database updates by running `php bin/magento setup:upgrade`\*
- - Flush the cache by running `php bin/magento cache:flush`
+## Screenshots  
 
-# Contribution
+**Admin Configuration**  
 
-Want to contribute to this extension? The quickest way is to <a href="https://help.github.com/articles/about-pull-requests/">open a pull request</a> on GitHub.
+![Admin Configuration](https://github.com/inadeemkhan/magento2-delete-orders-master/blob/master/images/orders.png) 
 
-# Screenshots & Support
-If you encounter any problems or bugs, please <a href="https://github.com/inadeemkhan/magento2-admin-order-status-in-color/issues">open an issue</a> on GitHub.
+---
 
-<b>Admin Grid</b>
-![ScreenShot](https://github.com/inadeemkhan/magento2-images/blob/master/order-status.png)
+## Prerequisites  
 
-## Prerequisites
+Ensure the following requirements are met before installing this extension:
 
-### Use the following table to verify you have the correct prerequisites to install this Extension.
-<table>
-	<tbody>
-		<tr>
-			<th>Prerequisite</th>
-			<th>How to check</th>
-			<th>For more information</th>
-		</tr>
-	<tr>
-		<td>Apache 2.2 or 2.4</td>
-		<td>Ubuntu: <code>apache2 -v</code><br>
-		CentOS: <code>httpd -v</code></td>
-		<td><a href="https://devdocs.magento.com/guides/v2.2/install-gde/prereq/apache.html">Apache</a></td>
-	</tr>
-	<tr>
-		<td>PHP 7.*.*</td>
-		<td><code>php -v</code></td>
-		<td><a href="http://devdocs.magento.com/guides/v2.2/install-gde/prereq/php-ubuntu.html">PHP Ubuntu</a><br><a href="http://devdocs.magento.com/guides/v2.2/install-gde/prereq/php-centos.html">PHP CentOS</a></td>
-	</tr>
-	<tr><td>MySQL 5.6.x</td>
-	<td><code>mysql -u [root user name] -p</code></td>
-	<td><a href="http://devdocs.magento.com/guides/v2.2/install-gde/prereq/mysql.html">MySQL</a></td>
-	</tr>
-</tbody>
-</table>
+| Prerequisite | How to Check | Documentation |
+|--------------|--------------|---------------|
+| Apache / Nginx | `apache2 -v` (Ubuntu)<br><br>`nginx -v` | [Apache Docs](https://devdocs.magento.com/guides/v2.2/install-gde/prereq/apache.html) <br> [Nginx Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)|
+| PHP >= 8.1 | `php -v` | [PHP on Ubuntu](http://devdocs.magento.com/guides/v2.2/install-gde/prereq/php-ubuntu.html)<br>[PHP on CentOS](http://devdocs.magento.com/guides/v2.2/install-gde/prereq/php-centos.html) |
+| MySQL 5.6.x | `mysql -u [root username] -p` | [MySQL Docs](http://devdocs.magento.com/guides/v2.2/install-gde/prereq/mysql.html) |
 
-### Feedback and Support 
+---
 
-<a href="mailto:khannadeem243@gmail.com">khannadeem243@gmail.com</a>
+## Contribution  
+
+Contributions are welcome!  
+The fastest way to contribute is by submitting a [pull request](https://help.github.com/articles/about-pull-requests/) on GitHub.  
+
+---
+
+## Issues & Support  
+
+If you encounter any issues or bugs, please [open an issue](https://github.com/inadeemkhan/magento2-delete-orders-master/issues) on GitHub.  
+
+For direct support or feedback, feel free to contact:  
+📧 [khannadeem243@gmail.com](mailto:khannadeem243@gmail.com)  
