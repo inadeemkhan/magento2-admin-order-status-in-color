@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-/**
-* Copyright © Nadeem. All rights reserved.
-*/
--->
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <columns name="sales_order_columns">
-        <column name="status" component="Nadeem_OrderStatusColor/js/grid/columns/select">
+        <column name="status" component="DevScripts_OrderStatusColor/js/grid/columns/status-color">
             <settings>
                 <filter>select</filter>
-                <options class="Magento\Sales\Ui\Component\Listing\Column\Status\Options"/>
+                <options class="Magento\Sales\Model\ResourceModel\Order\Status\Collection"/>
                 <dataType>select</dataType>
                 <label translate="true">Status</label>
             </settings>
